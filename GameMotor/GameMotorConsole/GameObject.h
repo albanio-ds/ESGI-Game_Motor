@@ -38,11 +38,16 @@ namespace Core
 				}
 			}
 
-			std::vector<std::unique_ptr<Component>>& GetComponents()
+			std::vector<Component*> GetAllComponents()
 			{
-				return m_Components;
+				std::vector<Component*> result = std::vector<Component*>();
+				result.reserve(m_Components.size());
+				for (const auto& comp : m_Components)
+				{
+					result.push_back(comp.get());
+				}
+				return result;
 			}
-
 
 			Component* GetComponent(ComponentType ctype)
 			{

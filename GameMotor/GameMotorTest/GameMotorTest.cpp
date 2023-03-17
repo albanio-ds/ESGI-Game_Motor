@@ -30,6 +30,7 @@ namespace GameMotorTest
 			obj.SetTag("TestTag");
 			std::string val = obj.GetTag();
 			Assert::IsTrue(val == "TestTag");
+			auto value = obj.GetAllComponents();
 		}
 		TEST_METHOD(TestComponent)
 		{

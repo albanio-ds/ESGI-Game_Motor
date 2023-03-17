@@ -25,6 +25,9 @@
     <Filter Include="Fichiers d%27en-tête\Core\Data">
       <UniqueIdentifier>{aac1e0de-e7b2-4752-b109-a2603e27c2a7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Fichiers sources\Core\Utilities">
+      <UniqueIdentifier>{83a5c097-cc60-49b1-a38c-2ac0c7f1c06f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine.cpp">
