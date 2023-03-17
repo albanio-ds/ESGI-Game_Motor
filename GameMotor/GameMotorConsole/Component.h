@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Event.h"
+#include <map>
 
 namespace Core
 {
@@ -63,6 +64,8 @@ namespace Core
 
 		class Behavior : public Component
 		{
+			// std::map<event<Behavior>, std::string> InputHandler;
+			// map une touche avec un event
 		public:
 			Behavior() : Component(ComponentType::eBehavior) {}
 		};
