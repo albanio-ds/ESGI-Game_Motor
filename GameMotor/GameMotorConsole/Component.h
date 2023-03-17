@@ -19,6 +19,11 @@ namespace Core
 			{
 
 			}
+
+			bool operator==(const Component& other)
+			{
+				return other.m_ComponentType == this->m_ComponentType;
+			}
 		};
 		class Transform : public Component
 		{
@@ -31,7 +36,16 @@ namespace Core
 
 			}
 		};
+		class Behavior : public Component
+		{
+		public:
+			__event void OnUpClicked();
 
+			void ClickUp()
+			{
+				OnUpClicked();
+			}
+		};
 	}
 }
 

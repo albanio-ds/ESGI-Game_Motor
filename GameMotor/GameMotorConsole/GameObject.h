@@ -15,8 +15,8 @@ namespace Core
 			static uint16_t GameObjectCreated;
 		private:
 			std::vector<std::unique_ptr<Component>> m_Components = std::vector<std::unique_ptr<Component>>();
-			uint16_t* m_Id;
-			std::string* m_Tag;
+			std::unique_ptr<uint16_t> m_Id;
+			std::unique_ptr<std::string> m_Tag;
 		public:
 
 			GameObject()
@@ -57,9 +57,17 @@ namespace Core
 				return nullptr;
 			}
 
-			void AddComponent(std::unique_ptr<Component> component)
+			bool AddComponent(std::unique_ptr<Component> component)
 			{
+				for (size_t i = 0; i < m_Components.size(); i++)
+				{
+					if (component == m_Components[i])
+					{
+						return false;
+					}
+				}
 				m_Components.push_back(std::move(component));
+				return true;
 			}
 
 			bool DeleteComponent(ComponentType ctype)
@@ -82,6 +90,17 @@ namespace Core
 					Core::Utilities::LogClass::Print("delete " + index);
 					return true;
 				}
+			}
+
+			void operator~()
+			{
+				m_Id.release();
+				m_Tag.release();
+				for (size_t i = 0; i < m_Components.size(); i++)
+				{
+					m_Components[i].release();
+				}
+				m_Components.clear();
 			}
 		};
 	}
