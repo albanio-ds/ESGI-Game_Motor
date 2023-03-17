@@ -1,4 +1,7 @@
 #pragma once
+#include <vector>
+#include "Component.h"
+#include <string>
 namespace Core
 {
 	namespace Data
@@ -9,7 +12,50 @@ namespace Core
 			// add/delete GO
 			// update scene -> foreach GO
 			// delete scene -> foreach GO + scene
-		};
+
+			std::vector<GameObject*> SceneObj;
+			std::string SceneName;
+
+		public:
+			
+			Scene(std::string sceneN = "Scene") : SceneName(sceneN)
+			{
+				SceneName = sceneN;
+			}
+
+			
+			~Scene() {
+				//
+			}
+			
+
+			void AddGO(GameObject* go)
+			{
+				SceneObj.push_back(go);
+			}
+
+			void RemoveGO(GameObject* go)
+			{
+				SceneObj.erase(std::remove(SceneObj.begin(), SceneObj.end(), go), SceneObj.end());
+			}
+
+			std::vector<GameObject*> FindObjectsWithTag(std::string tag)
+			{
+				std::vector<GameObject*> ObjectsWithTag;
+				for (auto go : SceneObj)
+				{
+					if(go.m_Tag = tag) ObjectsWithTag.push_back(go);
+				}
+				return ObjectsWithTag;
+			}
+
+			void Update()
+			{
+				for (auto go : SceneObj)
+				{
+
+				}
+			}
 	}
 }
 
