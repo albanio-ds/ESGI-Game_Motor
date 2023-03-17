@@ -23,7 +23,7 @@ namespace Core
 			{
 				*m_Id = 0;
 				//GameObjectCreated++;
-				std::unique_ptr<Transform> transform = std::make_unique<Transform>();
+				std::unique_ptr<Component> transform = std::make_unique<Transform>();
 				m_Components.push_back(std::move(transform));
 			}
 
@@ -63,9 +63,9 @@ namespace Core
 
 			bool AddComponent(Component component)
 			{
-				for (size_t i = 0; i < m_Components.size(); i++)
+				for (const auto& comp : m_Components)
 				{
-					if (component.m_ComponentType == m_Components[i].get()->m_ComponentType)
+					if (component.m_ComponentType == comp->m_ComponentType)
 					{
 						return false;
 					}
@@ -75,14 +75,18 @@ namespace Core
 				return true;
 			}
 
+
 			bool DeleteComponent(ComponentType ctype)
 			{
 				size_t index = -1;
-				for (size_t i = 0; i < m_Components.size(); i++)
+				if (ctype != ComponentType::eTransform)
 				{
-					if (m_Components[i]->m_ComponentType == ctype)
+					for (size_t i = 0; i < m_Components.size(); i++)
 					{
-						index = i;
+						if (m_Components[i]->m_ComponentType == ctype)
+						{
+							index = i;
+						}
 					}
 				}
 				if (index == -1)
@@ -101,7 +105,7 @@ namespace Core
 				}
 			}
 
-			void operator~()
+			~GameObject()
 			{
 				m_Id.release();
 				m_Tag.release();

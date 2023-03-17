@@ -11,32 +11,36 @@ namespace GameMotorTest
 	{
 	public:
 		
-		TEST_METHOD(TestMethod1)
+		TEST_METHOD(SceneFindGameObjectWithTagTest)
 		{
 			//GameObject::GameObjectCreated = 0;
-			Scene scene = Scene();
+			Scene* scene = new Scene();
 			GameObject* newGo = new GameObject();
-			newGo->SetTag("TestTag");
-			scene.AddGO(newGo);
-			auto value1 = scene.FindObjectsWithTag("TestTag");
-			auto value2 = scene.FindObjectsWithTag("NotATag");
-			Assert::IsTrue(value1.size() == 1);
+			newGo->SetTag("ValidTag");
+			scene->AddGO(newGo);
+			scene->AddGO(newGo);
+			auto value1 = scene->FindObjectsWithTag("ValidTag");
+			auto value2 = scene->FindObjectsWithTag("InvalidTag");
+			Assert::IsTrue(value1.size() == 2);
 			Assert::IsTrue(value2.size() == 0);
+			scene->~Scene();
 		}
 
-		TEST_METHOD(GameObjectTest)
+		TEST_METHOD(GameObjectGetAndSetTagTest)
 		{
-			GameObject obj = GameObject();
-			obj.SetTag("TestTag");
-			std::string val = obj.GetTag();
+			GameObject* obj = new GameObject();
+			obj->SetTag("TestTag");
+			std::string val = obj->GetTag();
 			Assert::IsTrue(val == "TestTag");
-			auto value = obj.GetAllComponents();
+			obj->~GameObject();
 		}
 		TEST_METHOD(TestComponent)
 		{
 			Component newComp = Component();
 			Transform transfo = Transform();
-			Assert::IsTrue(transfo == newComp);
+			Assert::IsTrue(newComp.m_ComponentType == transfo.m_ComponentType);
+			//Assert::IsTrue(transfo == static_cast<Component&>(newComp));
+			//Assert::IsTrue(transfo == newComp);
 		}
 	};
 }

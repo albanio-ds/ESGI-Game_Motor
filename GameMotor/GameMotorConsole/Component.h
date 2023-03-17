@@ -3,7 +3,7 @@ namespace Core
 {
 	namespace Data
 	{
-		enum ComponentType { eTransform };
+		enum class ComponentType { eTransform, eBehavior, eBoundary };
 
 		class Component
 		{
@@ -33,24 +33,22 @@ namespace Core
 		};
 		class Transform : public Component
 		{
-		private:
-			const ComponentType m_ComponentType = ComponentType::eTransform;
-
 		public:
-			Transform() : Component(m_ComponentType)
-			{
-
-			}
+			Transform() : Component(ComponentType::eTransform) {}
 		};
+
+
 		class Behavior : public Component
 		{
 		public:
-			__event void OnUpClicked();
+			Behavior() : Component(ComponentType::eBehavior) {}
+		};
 
-			void ClickUp()
-			{
-				OnUpClicked();
-			}
+
+		class Boundary : public Component
+		{
+		public:
+			Boundary() : Component(ComponentType::eBoundary) {}
 		};
 	}
 }

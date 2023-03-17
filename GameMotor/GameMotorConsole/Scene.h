@@ -25,10 +25,10 @@ namespace Core
 			}
 
 
-			void operator~() {
+			~Scene() {
 				for (GameObject* go : SceneObj)
 				{
-					delete go;
+					go->~GameObject();
 				}
 				SceneObj.clear();
 			}
