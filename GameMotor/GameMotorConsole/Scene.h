@@ -17,17 +17,21 @@ namespace Core
 			std::string SceneName;
 
 		public:
-			
+
 			Scene(std::string sceneN = "Scene") : SceneName(sceneN)
 			{
 				SceneName = sceneN;
 			}
 
-			
-			~Scene() {
-				//
+
+			void operator~() {
+				for (GameObject* go : SceneObj)
+				{
+					delete go;
+				}
+				SceneObj.clear();
 			}
-			
+
 
 			void AddGO(GameObject* go)
 			{
@@ -44,7 +48,7 @@ namespace Core
 				std::vector<GameObject*> ObjectsWithTag;
 				for (auto go : SceneObj)
 				{
-					if(go.m_Tag = tag) ObjectsWithTag.push_back(go);
+					if (go->GetTag() == tag) ObjectsWithTag.push_back(go);
 				}
 				return ObjectsWithTag;
 			}
@@ -53,9 +57,10 @@ namespace Core
 			{
 				for (auto go : SceneObj)
 				{
-
+					go->Update();
 				}
 			}
+		};
 	}
 }
 
