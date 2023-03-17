@@ -38,7 +38,7 @@ namespace GameMotorTest
 		{
 			Component newComp = Component();
 			Transform transfo = Transform();
-			Assert::IsTrue(newComp.m_ComponentType == transfo.m_ComponentType);
+			Assert::IsTrue(newComp == transfo);
 			//Assert::IsTrue(transfo == static_cast<Component&>(newComp));
 			//Assert::IsTrue(transfo == newComp);
 		}

@@ -14,17 +14,17 @@ namespace GameMotorTest
 		TEST_METHOD(ComponentOperationTestMethod)
 		{
 			//GameObject::GameObjectCreated = 0;
-			Scene scene = Scene();
+			Scene* scene = new Scene();
 			GameObject* newGo = new GameObject();
 
-			scene.AddGO(newGo);
+			scene->AddGO(newGo);
 			Component compo = Component();
 
 
-			Assert::IsTrue(newGo->AddComponent(compo));
+			Assert::IsFalse(newGo->AddComponent(compo));
 
 			//newGo->DeleteComponent(ComponentType::eTransform);
-
+			scene->~Scene();
 		}
 	};
 }

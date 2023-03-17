@@ -1,4 +1,7 @@
 #pragma once
+
+#include "Event.h"
+
 namespace Core
 {
 	namespace Data
@@ -34,7 +37,27 @@ namespace Core
 		class Transform : public Component
 		{
 		public:
+			struct Point {
+			public:
+				float X;
+				float Y;
+				float Z;
+				Point()
+				{
+					X = 0;
+					Y = 0;
+					Z = 0;
+				}
+			};
 			Transform() : Component(ComponentType::eTransform) {}
+			void UpdatePosition(Point newPt)
+			{
+				currPos = newPt;
+				//OnPositionChanged.call(newPt);
+			}
+		private:
+			//event<Point> OnPositionChanged;
+			Point currPos = Point();
 		};
 
 
