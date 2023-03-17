@@ -45,13 +45,13 @@ namespace Core
 			}
 
 
-			std::unique_ptr<Component> GetComponent(ComponentType ctype)
+			Component* GetComponent(ComponentType ctype)
 			{
 				for (size_t i = 0; i < m_Components.size(); i++)
 				{
 					if (m_Components[i]->m_ComponentType == ctype)
 					{
-						return m_Components[i];
+						return m_Components[i].get();
 					}
 				}
 				return nullptr;
