@@ -6,6 +6,7 @@
 
 namespace Core
 {
+	using namespace Utilities;
 	namespace Data
 	{
 
@@ -14,7 +15,7 @@ namespace Core
 		private:
 			std::vector<std::unique_ptr<Component>> m_Components = std::vector<std::unique_ptr<Component>>();
 			std::unique_ptr<uint16_t> m_Id = std::make_unique<uint16_t>();
-			std::string* m_Tag;
+			std::unique_ptr<cString> m_Tag = std::make_unique<cString>();
 		public:
 			//static uint16_t GameObjectCreated = 0;
 
@@ -24,11 +25,10 @@ namespace Core
 				//GameObjectCreated++;
 				std::unique_ptr<Transform> transform = std::make_unique<Transform>();
 				m_Components.push_back(std::move(transform));
-				m_Tag == nullptr;
 			}
 
-			std::string GetTag() const { return *m_Tag; };
-			void SetTag(std::string value) { *m_Tag = value; }
+			std::string GetTag() const { return m_Tag->Get(); };
+			void SetTag(std::string value) { m_Tag->Set(value); }
 
 			void Update()
 			{
@@ -56,16 +56,17 @@ namespace Core
 				return nullptr;
 			}
 
-			bool AddComponent(std::unique_ptr<Component> component)
+			bool AddComponent(Component component)
 			{
 				for (size_t i = 0; i < m_Components.size(); i++)
 				{
-					if (component == m_Components[i])
+					if (component.m_ComponentType == m_Components[i].get()->m_ComponentType)
 					{
 						return false;
 					}
 				}
-				m_Components.push_back(std::move(component));
+				std::unique_ptr<Component> toAdd = std::make_unique<Component>(component);
+				m_Components.push_back(std::move(toAdd));
 				return true;
 			}
 
