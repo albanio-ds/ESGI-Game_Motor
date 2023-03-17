@@ -15,13 +15,16 @@ namespace GameMotorTest
 		{
 			//GameObject::GameObjectCreated = 0;
 			Scene scene = Scene();
-			//GameObject* newGo = new GameObject();
-			//newGo->SetTag("TestTag");
-			//scene.AddGO(newGo);
-			//auto value1 = scene.FindObjectsWithTag("TestTag");
-			auto value2 = scene.FindObjectsWithTag("NotATag");
-			//Assert::IsTrue(value1.size() == 1);
-			Assert::IsTrue(value2.size() == 0);
+			GameObject* newGo = new GameObject();
+
+			scene.AddGO(newGo);
+			Component compo = Component();
+
+
+			Assert::IsTrue(newGo->AddComponent(compo));
+
+			//newGo->DeleteComponent(ComponentType::eTransform);
+
 		}
 	};
 }
