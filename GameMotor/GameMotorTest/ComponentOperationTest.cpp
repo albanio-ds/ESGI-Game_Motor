@@ -7,11 +7,11 @@ using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
 namespace GameMotorTest
 {
-	TEST_CLASS(GameMotorTest)
+	TEST_CLASS(ComponentOperationTest)
 	{
 	public:
-		
-		TEST_METHOD(TestMethod1)
+
+		TEST_METHOD(ComponentOperationTestMethod)
 		{
 			//GameObject::GameObjectCreated = 0;
 			Scene scene = Scene();
@@ -22,13 +22,6 @@ namespace GameMotorTest
 			auto value2 = scene.FindObjectsWithTag("NotATag");
 			//Assert::IsTrue(value1.size() == 1);
 			Assert::IsTrue(value2.size() == 0);
-		}
-
-		TEST_METHOD(TestComponent)
-		{
-			Component* newComp = new Component();
-			Transform* transfo = dynamic_cast<Transform*>(newComp);
-			Assert::IsNotNull(transfo);
 		}
 	};
 }

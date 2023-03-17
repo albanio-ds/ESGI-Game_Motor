@@ -21,6 +21,7 @@ namespace Core
 			Scene(std::string sceneN = "Scene") : SceneName(sceneN)
 			{
 				SceneName = sceneN;
+				//GameObject::GameObjectCreated = 0;
 			}
 
 

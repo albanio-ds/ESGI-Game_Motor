@@ -13,20 +13,15 @@ namespace Core
 		{
 		private:
 			std::vector<std::unique_ptr<Component>> m_Components = std::vector<std::unique_ptr<Component>>();
-			std::unique_ptr<uint16_t> m_Id;
-			std::unique_ptr<std::string> m_Tag;
-
-			static std::unique_ptr <uint16_t> GameObjectCreated;
+			std::unique_ptr<uint16_t> m_Id = std::make_unique<uint16_t>();
+			std::string* m_Tag;
 		public:
+			//static uint16_t GameObjectCreated = 0;
 
 			GameObject()
 			{
-				if (GameObjectCreated == nullptr)
-				{
-					GameObjectCreated = std::unique_ptr<uint16_t>();
-					*GameObjectCreated = 0;
-				}
-				*m_Id = *GameObjectCreated;
+				*m_Id = 0;
+				//GameObjectCreated++;
 				std::unique_ptr<Transform> transform = std::make_unique<Transform>();
 				m_Components.push_back(std::move(transform));
 				m_Tag == nullptr;

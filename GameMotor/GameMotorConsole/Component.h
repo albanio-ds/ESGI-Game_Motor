@@ -3,7 +3,7 @@ namespace Core
 {
 	namespace Data
 	{
-		enum ComponentType { eTransform };
+		enum class ComponentType { eTransform };
 
 		class Component
 		{
