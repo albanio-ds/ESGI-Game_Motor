@@ -46,7 +46,7 @@ namespace Core
 			std::vector<GameObject*> FindObjectsWithTag(std::string tag)
 			{
 				std::vector<GameObject*> ObjectsWithTag;
-				for (auto go : SceneObj)
+				for (GameObject* go : SceneObj)
 				{
 					if (go->GetTag() == tag) ObjectsWithTag.push_back(go);
 				}
@@ -55,7 +55,7 @@ namespace Core
 
 			void Update()
 			{
-				for (auto go : SceneObj)
+				for (GameObject* go : SceneObj)
 				{
 					go->Update();
 				}
