@@ -1,33 +1,37 @@
 #pragma once
-#include <string>
 namespace Core
 {
 	namespace Data
 	{
+		enum ComponentType { eTransform };
+
 		class Component
 		{
 		public:
-			std::string Name;
+			ComponentType m_ComponentType;
 
-			Component(std::string name)
+			Component(ComponentType componentType)
 			{
-				Name = name;
+				m_ComponentType = componentType;
+			}
+
+			virtual void Update()
+			{
+
 			}
 		};
-		class Transform : Component
+		class Transform : public Component
 		{
+		private:
+			const ComponentType m_ComponentType = ComponentType::eTransform;
+
 		public:
-			Transform() : Component("Transform")
+			Transform() : Component(m_ComponentType)
 			{
 
 			}
 		};
 
-
-		class GameObject
-		{
-
-		};
 	}
 }
 

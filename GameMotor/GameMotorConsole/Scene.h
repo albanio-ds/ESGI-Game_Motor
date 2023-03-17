@@ -1,6 +1,6 @@
 #pragma once
 #include <vector>
-#include "Component.h"
+#include "GameObject.h"
 #include <string>
 namespace Core
 {
