@@ -72,7 +72,7 @@ namespace Core
 
 			bool DeleteComponent(ComponentType ctype)
 			{
-				uint16_t index = -1;
+				size_t index = -1;
 				for (size_t i = 0; i < m_Components.size(); i++)
 				{
 					if (m_Components[i]->m_ComponentType == ctype)
@@ -87,6 +87,10 @@ namespace Core
 				}
 				else 
 				{
+					if (index >= 0 && index < m_Components.size())
+					{
+						m_Components.erase(m_Components.begin() + index);
+					}
 					Core::Utilities::LogClass::Print("delete " + index);
 					return true;
 				}

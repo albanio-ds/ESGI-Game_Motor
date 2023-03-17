@@ -48,6 +48,9 @@
     <ClCompile Include="Component.cpp">
       <Filter>Fichiers sources\Core\Data</Filter>
     </ClCompile>
+    <ClCompile Include="LogClass.cpp">
+      <Filter>Fichiers sources\Core\Data</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine.h">
@@ -75,6 +78,9 @@
       <Filter>Fichiers d%27en-tête\Core\Data</Filter>
     </ClInclude>
     <ClInclude Include="Component.h">
+      <Filter>Fichiers d%27en-tête\Core\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="LogClass.h">
       <Filter>Fichiers d%27en-tête\Core\Data</Filter>
     </ClInclude>
   </ItemGroup>

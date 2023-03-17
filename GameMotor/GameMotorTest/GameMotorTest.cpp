@@ -33,9 +33,9 @@ namespace GameMotorTest
 		}
 		TEST_METHOD(TestComponent)
 		{
-			Component* newComp = new Component();
-			Transform* transfo = dynamic_cast<Transform*>(newComp);
-			Assert::IsNotNull(transfo);
+			Component newComp = Component();
+			Transform transfo = Transform();
+			Assert::IsTrue(transfo == newComp);
 		}
 	};
 }

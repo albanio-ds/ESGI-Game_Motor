@@ -3,7 +3,7 @@ namespace Core
 {
 	namespace Data
 	{
-		enum class ComponentType { eTransform };
+		enum ComponentType { eTransform };
 
 		class Component
 		{
@@ -15,11 +15,6 @@ namespace Core
 				m_ComponentType = ComponentType::eTransform;
 			}
 
-			Component(ComponentType componentType)
-			{
-				m_ComponentType = componentType;
-			}
-
 			virtual void Update()
 			{
 
@@ -28,6 +23,12 @@ namespace Core
 			bool operator==(const Component& other)
 			{
 				return other.m_ComponentType == this->m_ComponentType;
+			}
+
+		protected:
+			Component(ComponentType componentType)
+			{
+				m_ComponentType = componentType;
 			}
 		};
 		class Transform : public Component
