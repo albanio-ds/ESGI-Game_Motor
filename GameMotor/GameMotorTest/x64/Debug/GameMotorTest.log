@@ -1,0 +1,7 @@
+﻿  GameMotorTest.cpp
+C:\Users\alban\OneDrive\Documents\Work\M2\S2\MoteurDeJeu\ESGI-Game_Motor\GameMotor\GameMotorConsole\LogClass.h(23,4): warning C4091: 'static ' : ignoré à gauche de 'Core::Utilities::LogClass' quand aucune variable n'est déclarée
+C:\Users\alban\OneDrive\Documents\Work\M2\S2\MoteurDeJeu\ESGI-Game_Motor\GameMotor\GameMotorConsole\GameObject.h(32,11): warning C4834: abandon de la valeur de retour de la fonction ayant l'attribut 'nodiscard'
+C:\Users\alban\OneDrive\Documents\Work\M2\S2\MoteurDeJeu\ESGI-Game_Motor\GameMotor\GameMotorConsole\GameObject.h(84,1): warning C4267: '=' : conversion de 'size_t' en 'uint16_t', perte possible de données
+     Création de la bibliothèque C:\Users\alban\OneDrive\Documents\Work\M2\S2\MoteurDeJeu\ESGI-Game_Motor\GameMotor\x64\Debug\GameMotorTest.lib et de l'objet C:\Users\alban\OneDrive\Documents\Work\M2\S2\MoteurDeJeu\ESGI-Game_Motor\GameMotor\x64\Debug\GameMotorTest.exp
+GameMotorTest.obj : error LNK2001: symbole externe non résolu "private: static class std::unique_ptr<unsigned short,struct std::default_delete<unsigned short> > Core::Data::GameObject::GameObjectCreated" (?GameObjectCreated@GameObject@Data@Core@@0V?$unique_ptr@GU?$default_delete@G@std@@@std@@A)
+C:\Users\alban\OneDrive\Documents\Work\M2\S2\MoteurDeJeu\ESGI-Game_Motor\GameMotor\x64\Debug\GameMotorTest.dll : fatal error LNK1120: 1 externes non résolus

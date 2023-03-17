@@ -10,6 +10,11 @@ namespace Core
 		public:
 			ComponentType m_ComponentType;
 
+			Component()
+			{
+				m_ComponentType = ComponentType::eTransform;
+			}
+
 			Component(ComponentType componentType)
 			{
 				m_ComponentType = componentType;

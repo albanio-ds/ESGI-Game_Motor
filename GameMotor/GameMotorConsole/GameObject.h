@@ -11,18 +11,22 @@ namespace Core
 
 		class GameObject
 		{
-		protected:
-			static uint16_t GameObjectCreated;
 		private:
 			std::vector<std::unique_ptr<Component>> m_Components = std::vector<std::unique_ptr<Component>>();
 			std::unique_ptr<uint16_t> m_Id;
 			std::unique_ptr<std::string> m_Tag;
+
+			static std::unique_ptr <uint16_t> GameObjectCreated;
 		public:
 
 			GameObject()
 			{
-				*m_Id = GameObjectCreated;
-				GameObjectCreated++;
+				if (GameObjectCreated == nullptr)
+				{
+					GameObjectCreated = std::unique_ptr<uint16_t>();
+					*GameObjectCreated = 0;
+				}
+				*m_Id = *GameObjectCreated;
 				std::unique_ptr<Transform> transform = std::make_unique<Transform>();
 				m_Components.push_back(std::move(transform));
 				m_Tag == nullptr;
